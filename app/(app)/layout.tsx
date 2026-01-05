@@ -1,4 +1,3 @@
-import "@/styles/globals.css";
 import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
@@ -7,10 +6,5 @@ import { redirect } from "next/navigation";
 export default async function AppLayout({ children }: { children: ReactNode }) {
   const session = await getServerSession(authOptions);
   if (!session?.user) redirect("/login");
-
-  return (
-    <html lang="it">
-      <body>{children}</body>
-    </html>
-  );
+  return <>{children}</>;
 }
